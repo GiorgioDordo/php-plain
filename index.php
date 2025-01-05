@@ -1,23 +1,11 @@
 <?php
 
 require 'functions.php';
-
+require 'Database.php';
 // require 'router.php';
 
-
-
-//Todo: connessione al MySql database
-
-$dsn = "mysql:host=localhost;port=3306;dbname=myapp;user=root;password=root;charset=utf8mb4"; // it declares how characters are encoded if we are not working with english or something similiar
-
-$pdo = new PDO($dsn); //data source name, a string that declares your connection to the database
-
-$statement = $pdo->prepare("select * from posts"); //preparing this query to send to mysql where it will be executed
-
-$statement->execute();
-
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC); //fetch all the results as opposed to a single result or a single record and give me the results as an associative array
-
+$db = new Database();
+$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
 // dd($posts);
 
 foreach ($posts as $post) {
