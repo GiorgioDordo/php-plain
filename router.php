@@ -1,5 +1,7 @@
 <?php 
 
+//TODO: $_SERVER is a superglobal variable that holds information about headers, paths, and script locations
+
 //Todo: aggiungendo path alla fine, faccio in modo che quando vado a fare dd() di uri, mi restituisca solo il path della pagina
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 // dd($uri);
