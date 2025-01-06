@@ -5,11 +5,12 @@ class Database {
 
     public function __construct($config, $username = 'root', $password = 'root') {
 
+        //data source name, a string that declares your connection to the database
         $dsn = 'mysql:' . http_build_query($config, '', ';'); // it declares how characters are encoded if we are not working with english or something similiar
 
         $this->connection = new PDO($dsn, $username, $password, [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, //fetch all the results as opposed to a single result or a single record and give me the results as an associative array
-        ]); //data source name, a string that declares your connection to the database
+        ]);
     }
 
     // Todo: function that will allow us to query the database, it will take a query and an array of parameters
