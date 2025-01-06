@@ -10,7 +10,12 @@ $db = new Database($config[ 'database' ]);
 
 $id = $_GET['id']; // $_GET is a superglobal variable that holds information about variables passed through the URL
 
-$posts = $db->query("select * from posts where id = {$id}")->fetch(); 
+$query = "select * from posts where id = ? ";
+
+// dd($query);  
+
+// Todo: never ever ever except user input and inline it as part of a database query, always use prepared statements
+$posts = $db->query($query, [$id])->fetch(); 
 
 dd($posts);
 
